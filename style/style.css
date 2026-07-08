@@ -27,8 +27,6 @@ header{
 }
 .logo h2{
     color: var(--black-1);
-    display: flex;
-    align-content: center;
     font-size: 2rem;
     font-weight: bolder;
     gap: 1rem;
@@ -44,6 +42,7 @@ nav ul{
 .logo a, nav ul{
     display: flex;
     gap: 1rem;
+    align-items: center;
 }
 nav ul{
     
@@ -380,8 +379,8 @@ display: flex;
     padding: 8px;
     border-radius: 10px;
     position: absolute;
-    bottom: 45px;
-    right: -32%;
+    bottom: 60px;
+    right: -34%;
     transform: rotate(-32deg);
     text-wrap: wrap;
 }
@@ -399,7 +398,7 @@ display: flex;
 footer{
     background-color: rgba(19, 19, 24, 0.05);
     padding: 1px;
-    padding-bottom: 100px;
+    padding-bottom: 50px;
 }
 .footer-section{
      width: 81%;
@@ -409,7 +408,7 @@ footer{
 }
 .footer-logo{
     display: flex;justify-content: center;
-    margin-top: 110px;
+    margin-top: 90px;
    
 }
 .social-icon ul li{
@@ -433,7 +432,7 @@ footer{
     justify-content: center;
 }
 .footer-section hr{
-    margin: 50px 0;
+    margin: 30px 0;
 }
 
 
@@ -524,7 +523,7 @@ footer{
         width: 100%;
     }
     .card-section ul{
-        /* flex-wrap: nowrap; */
+      
         margin: 24px 0;
         gap: 1rem;
     }

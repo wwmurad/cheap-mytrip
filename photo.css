@@ -1,0 +1,414 @@
+/* বেসিক রিসেট */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* মেইন গ্রিড কন্টেইনার */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); /* পুরো গ্রিডকে সমান ৬টি কলামে ভাগ করা হয়েছে */
+    gap: 15px; /* ইমেজগুলোর মাঝের গ্যাপ */
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* প্রতিটি আইটেমের কমন স্টাইল */
+.grid-item {
+    position: relative;
+    border-radius: 15px; /* কোণা গোল করার জন্য */
+    overflow: hidden;
+    height: 250px; /* একটি স্ট্যান্ডার্ড উচ্চতা */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ইমেজ ফুল কভার করার জন্য */
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+/* হোভার করলে হালকা জুম ইফেক্ট (ঐচ্ছিক) */
+.grid-item:hover img {
+    transform: scale(1.03);
+}
+
+/* ইমেজের ওপরের টেক্সট স্টাইল */
+.overlay-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.25); /* টেক্সট স্পষ্ট দেখানোর জন্য হালকা কালো শেড */
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* --- নির্দিষ্ট ইমেজের সাইজ নির্ধারণ (Grid Spanning) --- */
+
+/* প্রথম লাইনের জন্য */
+.item-maldives {
+    grid-column: span 6; /* ৩ কলাম জায়গা নিবে */
+}
+.item-indonesia {
+    grid-column: span 6; /* ৩ কলাম জায়গা নিবে */
+}
+
+/* দ্বিতীয় লাইনের জন্য */
+.item-srilanka {
+    grid-column: span 4;
+}
+.item-north-america {
+    grid-column: span 5;
+}
+.item-kashmir {
+    grid-column: span 3;
+}
+
+/* তৃতীয় লাইনের জন্য */
+.item-bangladesh {
+    grid-column: span 5;
+}
+.item-bandarban {
+    grid-column: span 7; /* এটি বেশি চওড়া তাই ৪ কলাম */
+}
+
+
+
+
+
+/* --- রেসপনসিভ (মোবাইল ফ্রেন্ডলি) করার জন্য --- */
+@media (max-width: 900px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* ট্যাবলেটে ২ কলাম হয়ে যাবে */
+    }
+    .grid-item {
+        grid-column: span 1 !important; /* সব আইটেম সমান সাইজ পাবে */
+        height: 200px;
+    }
+}
+
+@media (max-width: 500px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* মোবাইলে ১ কলাম (একটি নিচে আরেকটি) আসবে */
+    }
+}
+
+
+/* পুরো ব্যানার এরিয়া */
+.banner {
+  width: 100%;
+  height: 500px; /* আপনার প্রয়োজন অনুযায়ী হাইট দিন */
+  background-image: url('Images/Group\ 39.png'); /* এখানে রিসোর্টের ছবিটির লিঙ্ক হবে */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  justify-content: flex-end; /* কার্ডটিকে ডানপাশে নেওয়ার জন্য */
+  align-items: center; /* কার্ডটিকে মাঝবরাবর রাখার জন্য */
+  padding-right: 5%; /* ডানপাশ থেকে একটু ফাঁকা রাখার জন্য */
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+/* গ্লাস-মর্ফিজম ইনফো কার্ড */
+.info-card {
+  width: 450px;
+  padding: 30px;
+  border-radius: 15px;
+  
+  /* গ্লাস ইফেক্টের মেইন সিক্রেট */
+  background: rgba(255, 255, 255, 0.45); /* সাদা রঙের হালকা ট্রান্সপারেন্ট শেড */
+  backdrop-filter: blur(10px); /* পেছনের ব্যাকগ্রাউন্ড ঝাপসা করার জন্য */
+  -webkit-backdrop-filter: blur(10px); /* সাফারী ব্রাউজারের জন্য */
+  
+  border: 1px solid rgba(255, 255, 255, 0.4); /* হালকা সাদা বর্ডার */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1); /* হালকা শ্যাডো */
+}
+
+/* উপরের ৩টি অপশন এক লাইনে নেওয়ার জন্য */
+.meta-info {
+  display: flex;
+  gap: 15px;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* টাইটেল স্টাইল */
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  margin: 0 0 10px 0;
+}
+
+/* ডেসক্রিপশন টেক্সট */
+.card-text {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* প্রাইস স্টাইল */
+.price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.price span {
+  color: #ff5500; /* কমল রঙ */
+}
+
+/* বুক নাও বাটন */
+.book-btn {
+  background-color: #ff5500; /* কমলা ব্যাকগ্রাউন্ড */
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+/* বাটনে হোভার ইফেক্ট */
+.book-btn:hover {
+  background-color: #e04b00;
+}
+
+
+/* মেইন কন্টেইনার সেটআপ */
+.tour-card-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px; /* আপনার প্রয়োজনমতো সাইজ দিন */
+    border-radius: 16px;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+}
+
+/* ব্যাকগ্রাউন্ড ইমেজ */
+.bg-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* গ্লাসমরফিজম ইনফো কার্ড (ডানপাশের বক্সটি) */
+.info-card {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    width: 45%; /* কার্ডের প্রস্থ */
+    background: rgba(255, 255, 255, 0.65); /* হালকা সাদা ব্যাকগ্রাউন্ড */
+    backdrop-filter: blur(12px); /* কাঁচের মতো ঝাপসা করার ম্যাজিক লাইন */
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* মেটা ইনফো লাইন (সিলেক্টেড অংশটি) */
+.meta-info {
+    display: flex;
+    gap: 15px;
+    font-size: 13px;
+    color: #333;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.info-item .icon {
+    color: #ff5722; /* আইকনের কালার */
+}
+
+/* টাইটেল এবং ডেসক্রিপশন */
+.tour-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    margin: 0 0 10px 0;
+}
+
+.tour-desc {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+/* প্রাইস সেকশন */
+.tour-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.tour-price span {
+    color: #ff5722; /* অরেঞ্জ কালার */
+}
+
+/* বুক নাও বাটন */
+.book-btn {
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.book-btn:hover {
+    background-color: #e04714;
+}
+
+
+
+/* Main card container */
+.card {
+  position: relative; /* Ribbon ta k relative position e rakhar jonno */
+  width: 400px;       /* Ichhamoto width dite paren */
+  border-radius: 24px;
+  overflow: hidden;   /* Ribbon er bad baki ongsho card er bahire gele kete jabe */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Card image */
+.card-img {
+  width: 100%;
+  display: block;
+}
+
+/* Baka Ribbon ti */
+.ribbon {
+  position: absolute;
+  bottom: 30px;      /* Niche theke thik koto upore thakbe */
+  right: -40px;      /* Done dikey kintu thakbe, overflow hidden e kete jabe */
+  background-color: #ff5722; /* Sunder orange color */
+  color: white;
+  padding: 15px 60px; /* Bhetoreri jaiga boro korar jonno */
+  text-align: center;
+  font-family: sans-serif;
+  
+  /* Main Magic: rotate diye ribbon-ti baka kora hoyeche */
+  transform: rotate(-20deg); 
+  
+  /* Text gulo jeno upor nic hoye thake layout layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Ribbon er bhetorer text design */
+.ribbon span {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.ribbon strong {
+  font-size: 22px;
+  margin-top: 2px;
+  font-weight: bold;
+}
+
+
+
+
+
+/* বেসিক নেভিগেশন বার স্টাইল */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #fff;
+  position: relative;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+.hero { color: #1a1a1a; }
+.travel { color: #ff5e00; } /* আপনার লোগোর অরেঞ্জ কালার */
+
+/* চেকবক্সটি স্ক্রিন থেকে লুকিয়ে ফেলার জন্য */
+.menu-checkbox {
+  display: none;
+}
+
+/* হ্যামবার্গার (মেনু) আইকন স্টাইল */
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  display: block;
+}
+
+/* মোবাইল মেনু স্টাইল (ডিফল্টভাবে এটি স্ক্রিনের বাইরে বা হাইড থাকবে) */
+.nav-links {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 100%;
+  background-color: #fff;
+  list-style: none;
+  display: none; /* প্রথমে মেনু বন্ধ থাকবে */
+  flex-direction: column;
+  box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+}
+
+.nav-links li a {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #eee;
+}
+
+/* ⚡ আসল ট্রিক: চেকবক্স যখন Checked হবে, তখন তার পাশের .nav-links দেখাবে */
+.menu-checkbox:checked ~ .nav-links {
+  display: flex;
+}
